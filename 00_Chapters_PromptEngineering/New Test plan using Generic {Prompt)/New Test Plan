@@ -1,0 +1,261 @@
+# Netbanking Login Function Test Plan
+
+## 1. Test Plan ID and Title
+
+- **Test Plan ID:** NBL-LOGIN-TP-001
+- **Title:** Netbanking Login Function Test Plan
+- **Version:** 0.1 — Draft for review
+- **Prepared date:** 2026-10-05
+- **Application:** Netbanking application; specific bank/product name not provided
+- **Feature:** User login — successful and unsuccessful attempts
+- **Plan status:** Proposed; requires stakeholder review and approval
+
+## 2. Objective and References
+
+### Objective
+
+Define planned testing to assess whether a user can authenticate with valid login data and is not authenticated when login data is invalid. The plan is limited to the login function and its direct, observable outcomes. It identifies the test conditions, prerequisites, risks, and proposed completion criteria; it does not report test execution.
+
+### References
+
+- User-provided scope in this conversation: Netbanking login; successful and unsuccessful login attempts; money transfer excluded.
+- Generic QA Template, Profile B — Test plan, in `5_RICE_POT_Generic_QA_Template.md`.
+- Approved product requirements, detailed acceptance criteria, bank-specific policies, and environment documentation: **Not provided**.
+
+## 3. In Scope and Out of Scope
+
+### In Scope
+
+- Functional testing of a successful login using an approved test account.
+- Functional testing of unsuccessful login attempts using invalid or incomplete input, where the login form and applicable rules support those conditions.
+- Verification of the observable authentication outcome: authenticated access for the valid case and no authenticated access for rejected cases.
+- Validation of form-required and format validation only where confirmed by product requirements or the implemented form specification.
+- Regression testing of the approved login scenarios after changes to the login feature or its direct dependencies.
+
+### Out of Scope
+
+- Money transfer functionality, explicitly excluded by the requester.
+- Account registration, password reset/recovery, profile management, and account maintenance.
+- MFA, OTP, SSO, CAPTCHA, account lockout, and password-policy testing unless separately specified and approved.
+- Security penetration, vulnerability, fraud, and compliance testing.
+- Performance, load, stress, availability, and disaster-recovery testing.
+- Mobile-native application testing; target application/platforms have not been specified.
+- Other banking functions or internal bank services not required to verify the login outcome.
+
+## 4. Requirements and Planned Coverage
+
+No formal requirement IDs or approved acceptance criteria were provided. The IDs below are **locally assigned planning IDs**, not bank requirement IDs. Their proposed outcomes must be confirmed before test execution.
+
+| Local ID | Requirement / planned condition | Planned coverage | Proposed observable result | Priority |
+| --- | --- | --- | --- | --- |
+| NBL-LOGIN-01 | Login with an approved active test account and valid credentials | Positive functional; regression | User reaches the application’s confirmed authenticated state. | Proposed: High |
+| NBL-LOGIN-02 | Login with a valid test username and incorrect password | Negative functional; regression | Authentication is rejected; user remains unauthenticated. | Proposed: High |
+| NBL-LOGIN-03 | Login using an unknown or invalid username, if supported by approved test data | Negative functional | Authentication is rejected; user remains unauthenticated. Exact response is not specified. | Proposed: High |
+| NBL-LOGIN-04 | Submit required fields empty or partially empty, where applicable | Negative/input validation | No authenticated state is created; required-field behavior follows approved form rules. | Proposed: Medium |
+| NBL-LOGIN-05 | Submit malformed input, only if input-format rules are documented | Negative/input validation | Invalid input is handled according to approved requirements; exact message is not assumed. | Proposed: Medium |
+| NBL-LOGIN-06 | Verify retry/lockout or CAPTCHA behavior only if the bank supplies the policy and test setup | Conditional; not executable until specified | Behavior and threshold match the approved policy. No threshold is assumed by this plan. | TBD |
+
+### Requirement and risk traceability
+
+| Requirement/risk source | Risk to the application or user | Planned response |
+| --- | --- | --- |
+| User-supplied login scope | Valid users may be unable to access the application, or invalid attempts may create an authenticated state. | Prioritize NBL-LOGIN-01 and NBL-LOGIN-02; verify the resulting authentication state. |
+| Test account/access details not provided | Testing may be blocked or use inappropriate data. | Require approved synthetic/test accounts and access before execution. |
+| Bank-specific login policy not provided | Incorrect assumptions about messages, retries, lockout, or additional verification. | Confirm applicable policy; keep policy-dependent coverage blocked until agreed. |
+| Money transfer explicitly out of scope | Scope creep into financial transaction flows. | Do not navigate to, initiate, or validate transfers as part of this plan. |
+
+## 5. Test Approach, Levels, and Types
+
+### Approach
+
+- Use requirement-based, risk-focused functional testing.
+- Use an approved test environment and bank-approved synthetic accounts only.
+- Exercise positive and negative login scenarios and observe whether an authenticated state is established.
+- Keep actual result and execution status separate from expected results in test records.
+- Re-run the approved login regression set after relevant changes.
+- Do not infer hidden authentication rules or treat an unconfirmed UI response as an approved acceptance criterion.
+
+### Test Levels
+
+- **Integration testing:** Planned only where the test environment exposes the login application's interaction with its authentication dependency and the responsible team provides suitable access. Not provided/confirmed.
+- **System testing:** Planned functional validation of the login experience and observable authentication outcomes.
+- **Regression testing:** Planned re-execution of approved login scenarios after relevant code, configuration, or dependency changes.
+- **Unit/component testing:** Owned by the development team; QA access and responsibility are not provided.
+
+### Test Types
+
+- Positive functional testing: in scope.
+- Negative functional and input-validation testing: in scope where supported by approved rules.
+- Regression testing: in scope.
+- Integration testing: conditional on environment and dependency access.
+- Compatibility testing: platform/browser matrix is not provided; propose only after the supported matrix is confirmed.
+- Performance, penetration/security, and broader non-functional testing: out of scope.
+
+## 6. Environment, Tools, Access, and Test Data
+
+### Environment
+
+- Test environment URL and name: **Not provided**.
+- Environment availability, configuration, and parity with production: **Not provided**.
+- Supported browsers, devices, operating systems, and application channel (web/native): **Not provided**.
+- Production credentials or real customer data must not be used for planned testing.
+
+### Tools
+
+- Test management and defect tracking tools: **Not provided**; existing project-standard tools are proposed.
+- Browser/device diagnostics or application logs: **Not provided**; use only if approved and available to QA.
+- No automation framework or test tooling has been selected.
+
+### Access and Test Data
+
+- QA access to the approved test environment: required; availability **Not provided**.
+- Valid synthetic test account: required for NBL-LOGIN-01; provisioning owner **Not provided**.
+- Invalid-password and unknown-user test inputs: synthetic values to be approved for the environment.
+- Empty/partial/malformed data: use only conditions relevant to documented form validation.
+- Account lockout, CAPTCHA, or additional verification test data/setup: **Not provided**; do not trigger without explicit policy and a safe test setup.
+- Secrets and credentials must be supplied through the bank-approved secret mechanism and must not be recorded in this plan or defect evidence.
+
+## 7. Entry and Exit Criteria
+
+All thresholds in this section are **proposed** and require agreement with the QA lead and product/bank owner.
+
+### Entry Criteria
+
+- Login scope, acceptance criteria, and applicable authentication policies are reviewed and approved.
+- Test environment URL and supported platform matrix are documented.
+- Environment is reachable, and a QA smoke check confirms the login page can be opened.
+- At least one approved valid synthetic test account and the required negative test data are available.
+- Test cases are reviewed; 100% of approved in-scope scenarios have defined preconditions and observable expected results.
+- Defect logging, escalation contacts, and triage ownership are agreed.
+
+### Exit Criteria
+
+- 100% of approved in-scope login test cases have an execution result recorded.
+- All failed cases have linked defects or a documented, approved disposition.
+- No unresolved Severity 1 or Severity 2 defect remains in the in-scope login function, unless formally accepted by the designated business owner.
+- The proposed pass threshold is at least 95% of executed in-scope cases passing; any lower result requires documented risk acceptance. This threshold is not a supplied bank criterion.
+- Policy-dependent cases (for example, lockout/CAPTCHA) are either tested against approved requirements or explicitly recorded as not tested/out of scope for the cycle.
+- QA lead and product/bank owner review the test summary and record a go/no-go recommendation.
+
+## 8. Roles, Responsibilities, Estimates, and Schedule
+
+Named owners and delivery dates are **Not provided**. The following assignments and estimates are proposals for planning.
+
+| Role | Proposed responsibility |
+| --- | --- |
+| QA Lead | Confirm scope, maintain this plan, review coverage and risks, coordinate triage, and prepare the test summary. |
+| QA Engineer | Prepare and execute approved cases, record evidence, report defects, and retest fixes. |
+| Product Owner / Business Analyst | Supply and approve login requirements, expected outcomes, and applicable account policies. |
+| Developer / Authentication-service owner | Explain relevant dependencies, support environment readiness, investigate defects, and provide fixes. |
+| Environment / Access owner | Provide the test URL, access, synthetic accounts, and environment support. |
+
+### Proposed Estimates and Schedule
+
+- Plan and requirement clarification: 0.5–1 working day.
+- Test design and review: 1 working day after requirements and environment details are available.
+- Functional execution: 1 working day, assuming stable access and prepared test data.
+- Retest and regression: 0.5–1 working day, dependent on defect volume and fix availability.
+- Reporting and sign-off: 0.5 working day.
+
+These estimates exclude wait time for access, requirement decisions, environment recovery, and defect fixes. Dates, staffing, and effort require stakeholder agreement.
+
+## 9. Defect Management and Reporting
+
+### Defect Reporting
+
+Record each defect with a unique ID, concise title, affected local requirement ID, environment/build, preconditions, reproducible steps, expected result and its source, actual result, severity, priority, and sanitized evidence. Never include passwords, tokens, personal financial information, or real customer data in reports.
+
+Proposed severity definitions:
+
+- **Severity 1 — Critical:** Login is broadly unavailable or an invalid attempt is shown to create an authenticated state, with no acceptable workaround.
+- **Severity 2 — High:** A major in-scope login scenario fails for a significant user group or prevents the primary login flow.
+- **Severity 3 — Medium:** A limited login scenario is affected and a reasonable workaround exists.
+- **Severity 4 — Low:** Cosmetic or low-impact issue with no material effect on the in-scope login outcome.
+
+Severity and priority definitions must be reconciled with the bank’s existing defect policy before execution.
+
+### Triage and Reporting
+
+- Proposed cadence: daily triage during active execution, with immediate escalation of Severity 1/2 issues.
+- Proposed status report: once per working day during execution, plus a final summary.
+- The report should include planned/executed/pass/fail/blocked/not-run counts, open defects by severity, risks, and decisions required.
+- QA retests fixes and runs impacted regression cases; unresolved issues and accepted risks are visible in the final report.
+
+## 10. Risks, Dependencies, Assumptions, and Open Questions
+
+### Risks
+
+- Missing approved login rules may cause expected results to be disputed.
+- Missing test access or valid synthetic accounts may prevent positive-path testing.
+- An unstable or production-only login endpoint may make safe test execution impossible.
+- Unknown lockout or anti-abuse policies may cause test data to be disabled if repeated failures are generated.
+- Unspecified platform support may leave compatibility coverage incomplete.
+
+### Dependencies
+
+- Approved login requirements and authentication policy.
+- Reachable, approved test environment.
+- Synthetic account provisioning and access support.
+- Availability of relevant development/authentication-service and environment contacts.
+- Agreed defect tracking and severity policy.
+
+### Assumptions
+
+- The requested feature is a Netbanking login function; the specific bank/product is not identified.
+- A successful login using valid approved credentials should establish an authenticated application state. This is a proposed assumption pending confirmation.
+- An unsuccessful login should not establish an authenticated state. This is a proposed assumption pending confirmation.
+- Exact page navigation, text, retry limits, lockout, CAPTCHA, OTP/MFA, and session timeout behavior are not assumed.
+- Money transfer is explicitly out of scope.
+
+### Open Questions
+
+- What is the bank/product name and approved test-environment URL?
+- What are the authoritative acceptance criteria and expected authenticated state for successful login?
+- What should happen for invalid credentials, blank fields, and malformed values? Are exact error messages specified?
+- Are retries, lockout, CAPTCHA, OTP/MFA, or other verification steps part of this login flow, and what policies govern them?
+- Which browsers/devices are supported, and is the target web, mobile web, or native application?
+- Who provisions synthetic accounts, approves test data, owns defect triage, and signs off?
+
+## 11. Suspension and Resumption Criteria
+
+### Suspension Criteria
+
+- The approved test environment is unavailable or materially unstable.
+- No approved test account or required access is available.
+- Login behavior appears to affect real customer accounts or production data.
+- A Severity 1 issue or a suspected unintended authenticated state is encountered; stop further attempts and escalate.
+- A test may trigger an unknown lockout, anti-abuse, or account-disablement policy.
+- Required acceptance criteria conflict or are not sufficiently clear to determine pass/fail.
+
+### Resumption Criteria
+
+- The environment and access issue is resolved and validated by an agreed smoke check.
+- Approved synthetic test accounts/data are available and reset as needed.
+- The responsible owner has assessed and cleared any potential customer/account impact.
+- Blocking requirements or policy questions have been resolved or formally accepted as explicit assumptions.
+- QA Lead authorizes resumption and communicates the revised execution scope.
+
+## 12. Test Deliverables and Approval
+
+### Planned Deliverables
+
+- This Netbanking Login Function Test Plan.
+- Requirement-to-test traceability for approved login requirements.
+- Reviewed login test scenarios/cases with preconditions and expected outcomes.
+- Execution status and sanitized evidence, once testing is authorized and performed.
+- Defect records and retest results, if defects are found.
+- Final test summary, open-risk list, and QA recommendation.
+
+### Approval
+
+Approval is required before test execution. Names, roles, and approval dates are **Not provided**.
+
+| Approval role | Name | Decision / date |
+| --- | --- | --- |
+| QA Lead | Not provided | Pending |
+| Product Owner / Business Owner | Not provided | Pending |
+| Application / Engineering Owner | Not provided | Pending |
+
+## Plan Status and Execution Disclaimer
+
+This is a proposed test plan based on the scope supplied by the requester and the Generic QA Template’s Profile B. Requirement IDs in this document are local planning IDs, not official bank IDs. Assumptions, thresholds, estimates, and responsibilities require stakeholder confirmation. No tests are claimed to have been executed.

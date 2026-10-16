@@ -11,5 +11,5 @@ console.log(Name3 ?? "Goodname3");
 let Name4 = "Abdul";
 console.log(Name4 ?? "Goodname4");
 
-let Name5 = 10 ;
+let Name5 = 10;
 console.log(Name5 ?? "Goodname5");

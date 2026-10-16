@@ -1,0 +1,23 @@
+{
+  "name": "azaruddin",
+  "version": "1.0.0",
+  "description": "",
+  "homepage": "https://github.com/azaruddin-s/PW_JSTS-AI#readme",
+  "bugs": {
+    "url": "https://github.com/azaruddin-s/PW_JSTS-AI/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/azaruddin-s/PW_JSTS-AI.git"
+  },
+  "license": "ISC",
+  "author": "Azaruddin_author",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "prompt-sync": "^4.2.0"
+  }
+}

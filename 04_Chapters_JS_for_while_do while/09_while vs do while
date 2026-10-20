@@ -1,0 +1,15 @@
+// While loop is also called an **entry loop.** . Only once condition is met, it will execute the code
+
+let a = 10;
+ while (a<10){
+    console.log("The a answer is " + a);
+    a++;
+ }
+
+ //do while will execute the code and checks the condition.i.e) perform the action atleast once.
+
+ let b = 10;
+ do {
+    console.log("The b answer is " + b);
+    b++;
+ } while (b<10)

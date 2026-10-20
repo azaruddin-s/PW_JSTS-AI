@@ -1,6 +1,6 @@
 # PW JSTS + AI
 
-This repository contains study notes and examples for JavaScript fundamentals, prompt engineering, and QA test planning.
+This repository contains study notes and runnable examples for JavaScript fundamentals, prompt engineering, and QA test planning.
 
 ## Repository contents
 
@@ -22,13 +22,25 @@ Numbered, standalone JavaScript examples covering topics such as:
 
 The scripts are organized in learning order. Open a lesson in this folder to review its examples and explanations.
 
-### `02_Chapters+JS_Conditions_Loops`
+### `02_Chapters+JS_Conditions_If and Switch Statement`
 
 Examples for JavaScript conditional logic, including `if`/`else`, nested conditions, and `switch` statements.
 
 ### `03_Chapters_JS_User Inputs`
 
-Examples of getting input with the browser's `prompt`, Node.js `readline`, and the `prompt-sync` package. The folder also includes a note about running commands in Windows PowerShell.
+Examples of getting input with the browser's `prompt`, Node.js `readline`, the `prompt-sync` package, and `fs.readFileSync`. The root-level `Note for Windows PowerShell Users.md` includes guidance for PowerShell script execution policy issues.
+
+### `04_Chapters_JS_for_while_do while`
+
+Examples of `for`, `while`, and `do...while` loops, including conditional loops and `break`. One lesson demonstrates an intentionally infinite loop; avoid running it unless you are prepared to stop the process.
+
+### `05_Coding_Practice`
+
+Practice programs for FizzBuzz, grade calculation, and triangle classification.
+
+### `06_Chapters_Arrays and Functions`
+
+Examples covering array creation, indexing, common array methods, searching, loops, and transforming arrays with `map`.
 
 ## Running a JavaScript lesson
 
@@ -38,12 +50,15 @@ Install [Node.js](https://nodejs.org/) and run a lesson from the repository root
 npm install
 ```
 
-Then run a lesson in PowerShell:
+Then run a lesson in PowerShell from the repository root:
 
 ```powershell
 node "01_Chapters_JS_Basics\008_Infinity_NaN_Literals.js"
-node "02_Chapters+JS_Conditions_Loops\001_If.js"
+node "02_Chapters+JS_Conditions_If and Switch Statement\001_If.js"
 node "03_Chapters_JS_User Inputs\03_Prompt-sync.js"
+node "04_Chapters_JS_for_while_do while\01_for loop.js"
+node "05_Coding_Practice\01_FizzBuzz.js"
+node "06_Chapters_Arrays and Functions\01_Arrays.js"
 ```
 
-Each lesson is intended to run independently. Replace the filename with the lesson you want to try. Browser `prompt` examples need to be run in a browser; Node.js examples can be run with `node`.
+Each lesson is intended to run independently. Replace the filename with the lesson you want to try. Browser `prompt` examples need to be run in a browser; Node.js examples can be run with `node`. Input-based lessons may wait for you to enter input in the terminal.

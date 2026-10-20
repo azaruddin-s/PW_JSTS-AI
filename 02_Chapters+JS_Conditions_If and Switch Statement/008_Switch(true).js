@@ -1,4 +1,5 @@
-let score = 0;
+const prompt = require ('prompt-sync')();
+let score = prompt("Enter your score - ");
 
 switch (true) {
 

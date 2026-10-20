@@ -2,9 +2,13 @@
 // 1. Run Powershell as administrator
 // 2. run "npm init" command - This will add package.json
 // 3. run prompt-sync command - "npm i prompt-sync"
-
-
+// 4. Always run the Program in the terminal only
 
 const prompt = require('prompt-sync')();
+
 let userInput = Number(prompt("Enter the number - "));
-console.log(userInput);
+console.log(`Your number is ${userInput}`);
+
+
+let userInput2 = String(prompt("Enter the name - "));
+console.log(`Thank you, ${userInput2}!`);

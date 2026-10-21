@@ -7,7 +7,7 @@ console.log("2. ", num.findLast(temp => temp>20)); //find last element matching 
 
 console.log("3. ", num.filter(temp=> temp>20));   //selects every element but return only matched values when condition is met. Find and select
 
-console.log("4. ", num.some(temp => temp>40));   //Return true/False according to the conditions
+console.log("4. ", num.some(temp => temp>40));   //Some array element can pass
 console.log("4.1. ", num.some(temp => temp>70)); 
 
 console.log("5. ", num.every(temp => temp>5)); // All array element must pass

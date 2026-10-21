@@ -40,7 +40,7 @@ Practice programs for FizzBuzz, grade calculation, and triangle classification.
 
 ### `06_Chapters_Arrays and Functions`
 
-Examples covering array creation, indexing, common array methods, searching, loops, and transforming arrays with `map`.
+Examples covering array creation and destructuring, indexing, common array methods, searching, loops, and transforming arrays with `map`. The chapter also demonstrates sorting, combining arrays with `concat` and spread syntax, and the difference between assigning an array reference and making a shallow copy with spread or `slice()`.
 
 ## Running a JavaScript lesson
 
@@ -59,6 +59,9 @@ node "03_Chapters_JS_User Inputs\03_Prompt-sync.js"
 node "04_Chapters_JS_for_while_do while\01_for loop.js"
 node "05_Coding_Practice\01_FizzBuzz.js"
 node "06_Chapters_Arrays and Functions\01_Arrays.js"
+node "06_Chapters_Arrays and Functions\09_Array_Sorting.js"
+node "06_Chapters_Arrays and Functions\10_Array_Concat_Spread.js"
+node "06_Chapters_Arrays and Functions\11_Arrays_Mutable.js"
 ```
 
 Each lesson is intended to run independently. Replace the filename with the lesson you want to try. Browser `prompt` examples need to be run in a browser; Node.js examples can be run with `node`. Input-based lessons may wait for you to enter input in the terminal.
